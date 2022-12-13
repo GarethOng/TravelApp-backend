@@ -1,0 +1,32 @@
+{
+  "name": "travelapp-backend",
+  "version": "1.0.0",
+  "description": "Backend for TravelApp",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon server --ignore client",
+    "start": "npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarethOng/TravelApp-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarethOng/TravelApp-backend/issues"
+  },
+  "homepage": "https://github.com/GarethOng/TravelApp-backend#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.2.0",
+    "mongoose": "^6.8.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
