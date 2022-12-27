@@ -21,8 +21,8 @@ const TripSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide the country you visited'],
   },
-  tripBudget: {
-    type: String,
+  budget: {
+    type: Number,
   },
   itinerary: {
     type: String,
