@@ -4,7 +4,6 @@ const TripSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'Please provide a title for the trip'],
-    unique: true,
   },
   startDate: {
     type: Date,
@@ -25,7 +24,20 @@ const TripSchema = new mongoose.Schema({
     type: Number,
   },
   itinerary: {
-    type: String,
+    type: [String],
+  },
+  coordinates: {
+    latitude: {
+      type: Number,
+    },
+    longitude: {
+      type: Number,
+    },
+  },
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+    required: [true, 'Please provide user'],
   },
 })
 
