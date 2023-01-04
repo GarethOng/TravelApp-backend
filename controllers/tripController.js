@@ -23,17 +23,21 @@ const addTrip = async (req, res) => {
   if (currTrip) {
     throw new BadRequestError('Trip alredy exists!')
   } else {
-    const coordinates = await mapsAPI.getCoordinates(country)
-    const newTrip = await Trip.create({
-      title: title,
-      startDate: startDate,
-      endDate: endDate,
-      country: country,
-      tripBudget: tripBudget,
-      itinerary: itinerary,
-      createdBy: userId,
-      coordinates: coordinates,
-    })
+    try {
+      const coordinates = await mapsAPI.getCoordinates(country)
+      const newTrip = await Trip.create({
+        title: title,
+        startDate: startDate,
+        endDate: endDate,
+        country: country,
+        tripBudget: tripBudget,
+        itinerary: itinerary,
+        createdBy: userId,
+        coordinates: coordinates,
+      })
+    } catch (error) {
+      console.log(error)
+    }
     res.status(StatusCodes.CREATED).json(newTrip)
   }
 }
