@@ -17,6 +17,7 @@ class MapsAPI {
   async getCoordinates(location) {
     try {
       const data = await this.geocoder.geocode(location)
+      console.log(data)
       const latitude = data[0].latitude
       const longitude = data[0].longitude
       const coordinates = { latitude: latitude, longitude: longitude }
