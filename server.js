@@ -7,6 +7,7 @@ import morgan from 'morgan'
 
 // db and authenticateUser
 import connectDB from './db/connect.js'
+import authenticateUser from './middleware/auth.js'
 
 // routers
 import authRouter from './routes/authRoutes.js'
@@ -31,7 +32,7 @@ app.get('/api/v1', (req, res) => {
 })
 
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/trip', tripRouter)
+app.use('/api/v1/trip', authenticateUser, tripRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
