@@ -16,15 +16,12 @@ class MapsAPI {
 
   async getCoordinates(location) {
     try {
-      console.log(location)
-      const { data } = await this.geocoder.geocode(location)
-      console.log(data)
+      const data = await this.geocoder.geocode(location)
       const latitude = data[0].latitude
       const longitude = data[0].longitude
       const coordinates = { latitude: latitude, longitude: longitude }
       return coordinates
     } catch (error) {
-      console.log(error)
       throw new ServerError(error)
     }
   }
