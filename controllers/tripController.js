@@ -35,10 +35,10 @@ const addTrip = async (req, res) => {
         createdBy: userId,
         coordinates: coordinates,
       })
+      res.status(StatusCodes.CREATED).json(newTrip)
     } catch (error) {
       console.log(error)
     }
-    res.status(StatusCodes.CREATED).json(newTrip)
   }
 }
 
