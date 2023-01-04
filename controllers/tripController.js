@@ -67,4 +67,19 @@ const updateTrip = async (req, res) => {
   res.status(StatusCodes.OK).json(updateTrip)
 }
 
-export { addTrip, getTrip, updateTrip }
+const deleteTrip = async (req, res) => {
+  const { id: tripId } = req.params
+
+  const trip = await Trip.findOne({ _id: tripId })
+
+  if (!trip) {
+    throw new NotFoundError(`No trip with id: ${tripId}`)
+  }
+
+  checkPermissions(req.user, trip.createdBy)
+
+  await trip.remove()
+  res.status(StatusCodes.OK).json({ msg: 'Successfully deleted trip!' })
+}
+
+export { addTrip, getTrip, updateTrip, deleteTrip }

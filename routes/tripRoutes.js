@@ -1,10 +1,14 @@
 import express from 'express'
 const router = express.Router()
-import { addTrip, getTrip, updateTrip } from '../controllers/tripController.js'
-import authenticateUser from '../middleware/auth.js'
+import {
+  addTrip,
+  getTrip,
+  deleteTrip,
+  updateTrip,
+} from '../controllers/tripController.js'
 
-router.route('/addTrip').post(authenticateUser, addTrip)
-router.route('/getTrip').post(authenticateUser, getTrip)
-router.route('/:id').patch(authenticateUser, updateTrip)
+router.route('/addTrip').post(addTrip)
+router.route('/getTrip').post(getTrip)
+router.route('/:id').delete(deleteTrip).patch(updateTrip)
 
 export default router
