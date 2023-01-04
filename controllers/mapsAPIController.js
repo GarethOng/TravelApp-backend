@@ -22,7 +22,7 @@ class MapsAPI {
       const coordinates = { latitude: latitude, longitude: longitude }
       return coordinates
     } catch (error) {
-      throw new ServerError(error)
+      throw new ServerError('Something went wrong. Please try again later :(')
     }
   }
 }
